@@ -6,7 +6,7 @@ It's an appendix to a presentation I plan to give, and to which I'll link when I
 
 The outline of the project is supposed to follow something like this:
 
-1. Extract the typically bad parts out from an app I'm currently working on
+1. Extract and anonymize the typically bad parts from an app I'm currently working on
 2. Put them in this project as working examples.
 3. Create a new branch for each major type of "fix" to the code.
 4. Issue a pull request back into the master branch so all the changes are visible in one location.
