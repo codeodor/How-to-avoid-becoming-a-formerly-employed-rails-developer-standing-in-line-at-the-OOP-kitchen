@@ -2,7 +2,7 @@
 
 This is a project whose goal is to illustrate how you might refactor a typical (in my experience) Rails app into something more manageable.
 
-It's an appendix to a presentation I plan to give, and to which I'll link when I have a link available. (To any recording and/or slides)
+It's an appendix to a presentation I plan to give, and to which I'll link when I have a link available. (To slides and/or recording)
 
 The outline of the project is supposed to follow something like this:
 
@@ -18,6 +18,6 @@ Any ideas you have on how to improve this, or other techniques you'd like to see
 3. Create a branch to fix it and fix it. 
 4. Issue pull request and we'll merge it in.
 
-If you want me to demonstrate it, get in touch with me at (insert contact info here) and tell me your idea.
+If you'd rather have me demonstrate a technique, get in touch with me at (insert contact info here) and tell me your idea.
 
 I'll keep a list of the major fixes here, so you can refer to them easily.
