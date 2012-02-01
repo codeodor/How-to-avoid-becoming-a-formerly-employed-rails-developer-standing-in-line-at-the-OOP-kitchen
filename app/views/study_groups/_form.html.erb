@@ -1,0 +1,49 @@
+<%= form_for(@study_group) do |f| %>
+  <% if @study_group.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(@study_group.errors.count, "error") %> prohibited this study_group from being saved:</h2>
+
+      <ul>
+      <% @study_group.errors.full_messages.each do |msg| %>
+        <li><%= msg %></li>
+      <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <div class="field">
+    <%= f.label :name %><br />
+    <%= f.text_field :name %>
+  </div>
+  <div class="field">
+    <%= f.label :section_id %><br />
+    <%= f.number_field :section_id %>
+  </div>
+  <div class="field">
+    <%= f.label :official %><br />
+    <%= f.check_box :official %>
+  </div>
+  <div class="field">
+    <%= f.label :website %><br />
+    <%= f.text_field :website %>
+  </div>
+  <div class="field">
+    <%= f.label :leader_id %><br />
+    <%= f.number_field :leader_id %>
+  </div>
+  <div class="field">
+    <%= f.label :meeting_day %><br />
+    <%= f.text_field :meeting_day %>
+  </div>
+  <div class="field">
+    <%= f.label :max_students %><br />
+    <%= f.number_field :max_students %>
+  </div>
+  <div class="field">
+    <%= f.label :educational_resource_id %><br />
+    <%= f.number_field :educational_resource_id %>
+  </div>
+  <div class="actions">
+    <%= f.submit %>
+  </div>
+<% end %>

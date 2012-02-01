@@ -1,0 +1,37 @@
+<h1>Listing study_groups</h1>
+
+<table>
+  <tr>
+    <th>Name</th>
+    <th>Section</th>
+    <th>Official</th>
+    <th>Website</th>
+    <th>Leader</th>
+    <th>Meeting day</th>
+    <th>Max students</th>
+    <th>Educational resource</th>
+    <th></th>
+    <th></th>
+    <th></th>
+  </tr>
+
+<% @study_groups.each do |study_group| %>
+  <tr>
+    <td><%= study_group.name %></td>
+    <td><%= study_group.section_id %></td>
+    <td><%= study_group.official %></td>
+    <td><%= study_group.website %></td>
+    <td><%= study_group.leader_id %></td>
+    <td><%= study_group.meeting_day %></td>
+    <td><%= study_group.max_students %></td>
+    <td><%= study_group.educational_resource_id %></td>
+    <td><%= link_to 'Show', study_group %></td>
+    <td><%= link_to 'Edit', edit_study_group_path(study_group) %></td>
+    <td><%= link_to 'Destroy', study_group, confirm: 'Are you sure?', method: :delete %></td>
+  </tr>
+<% end %>
+</table>
+
+<br />
+
+<%= link_to 'New Study group', new_study_group_path %>

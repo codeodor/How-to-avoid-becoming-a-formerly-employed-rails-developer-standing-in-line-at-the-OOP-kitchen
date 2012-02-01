@@ -1,0 +1,60 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <b>Payment status:</b>
+  <%= @registration.payment_status %>
+</p>
+
+<p>
+  <b>Approved:</b>
+  <%= @registration.approved %>
+</p>
+
+<p>
+  <b>Teaching assistant:</b>
+  <%= @registration.teaching_assistant %>
+</p>
+
+<p>
+  <b>Registration fee:</b>
+  <%= @registration.registration_fee %>
+</p>
+
+<p>
+  <b>User:</b>
+  <%= @registration.user_id %>
+</p>
+
+<p>
+  <b>Section:</b>
+  <%= @registration.section_id %>
+</p>
+
+<p>
+  <b>Study group:</b>
+  <%= @registration.study_group_id %>
+</p>
+
+<p>
+  <b>Class coordinator:</b>
+  <%= @registration.class_coordinator %>
+</p>
+
+<p>
+  <b>Study group leader:</b>
+  <%= @registration.study_group_leader %>
+</p>
+
+<p>
+  <b>Signup reason:</b>
+  <%= @registration.signup_reason_id %>
+</p>
+
+<p>
+  <b>Scholarship code:</b>
+  <%= @registration.scholarship_code_id %>
+</p>
+
+
+<%= link_to 'Edit', edit_registration_path(@registration) %> |
+<%= link_to 'Back', registrations_path %>

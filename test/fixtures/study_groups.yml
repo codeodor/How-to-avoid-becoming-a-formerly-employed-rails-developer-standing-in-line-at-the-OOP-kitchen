@@ -1,0 +1,21 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/Fixtures.html
+
+one:
+  name: MyString
+  section_id: 1
+  official: false
+  website: MyString
+  leader_id: 1
+  meeting_day: MyString
+  max_students: 1
+  educational_resource_id: 1
+
+two:
+  name: MyString
+  section_id: 1
+  official: false
+  website: MyString
+  leader_id: 1
+  meeting_day: MyString
+  max_students: 1
+  educational_resource_id: 1

@@ -1,0 +1,27 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/Fixtures.html
+
+one:
+  payment_status: 1
+  approved: false
+  teaching_assistant: false
+  registration_fee: 1.5
+  user_id: 1
+  section_id: 1
+  study_group_id: 1
+  class_coordinator: false
+  study_group_leader: false
+  signup_reason_id: 1
+  scholarship_code_id: 1
+
+two:
+  payment_status: 1
+  approved: false
+  teaching_assistant: false
+  registration_fee: 1.5
+  user_id: 1
+  section_id: 1
+  study_group_id: 1
+  class_coordinator: false
+  study_group_leader: false
+  signup_reason_id: 1
+  scholarship_code_id: 1

@@ -1,0 +1,33 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/Fixtures.html
+
+one:
+  course_id: 1
+  name: MyString
+  description: MyText
+  registration_status: 1
+  start_date: 2012-01-31
+  end_date: 2012-01-31
+  registration_fee: 1.5
+  class_length: 1
+  max_students: 1
+  study_group_size_for_official_status: 1
+  max_study_group_size: 1
+  registration_message: MyText
+  show_message: false
+  resource_list_id: 1
+
+two:
+  course_id: 1
+  name: MyString
+  description: MyText
+  registration_status: 1
+  start_date: 2012-01-31
+  end_date: 2012-01-31
+  registration_fee: 1.5
+  class_length: 1
+  max_students: 1
+  study_group_size_for_official_status: 1
+  max_study_group_size: 1
+  registration_message: MyText
+  show_message: false
+  resource_list_id: 1

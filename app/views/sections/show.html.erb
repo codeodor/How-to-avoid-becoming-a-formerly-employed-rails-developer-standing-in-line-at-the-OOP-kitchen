@@ -1,0 +1,75 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <b>Course:</b>
+  <%= @section.course_id %>
+</p>
+
+<p>
+  <b>Name:</b>
+  <%= @section.name %>
+</p>
+
+<p>
+  <b>Description:</b>
+  <%= @section.description %>
+</p>
+
+<p>
+  <b>Registration status:</b>
+  <%= @section.registration_status %>
+</p>
+
+<p>
+  <b>Start date:</b>
+  <%= @section.start_date %>
+</p>
+
+<p>
+  <b>End date:</b>
+  <%= @section.end_date %>
+</p>
+
+<p>
+  <b>Registration fee:</b>
+  <%= @section.registration_fee %>
+</p>
+
+<p>
+  <b>Class length:</b>
+  <%= @section.class_length %>
+</p>
+
+<p>
+  <b>Max students:</b>
+  <%= @section.max_students %>
+</p>
+
+<p>
+  <b>Study group size for official status:</b>
+  <%= @section.study_group_size_for_official_status %>
+</p>
+
+<p>
+  <b>Max study group size:</b>
+  <%= @section.max_study_group_size %>
+</p>
+
+<p>
+  <b>Registration message:</b>
+  <%= @section.registration_message %>
+</p>
+
+<p>
+  <b>Show message:</b>
+  <%= @section.show_message %>
+</p>
+
+<p>
+  <b>Resource list:</b>
+  <%= @section.resource_list_id %>
+</p>
+
+
+<%= link_to 'Edit', edit_section_path(@section) %> |
+<%= link_to 'Back', sections_path %>

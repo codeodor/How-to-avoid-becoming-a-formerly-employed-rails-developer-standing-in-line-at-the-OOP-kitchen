@@ -1,0 +1,45 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <b>Name:</b>
+  <%= @study_group.name %>
+</p>
+
+<p>
+  <b>Section:</b>
+  <%= @study_group.section_id %>
+</p>
+
+<p>
+  <b>Official:</b>
+  <%= @study_group.official %>
+</p>
+
+<p>
+  <b>Website:</b>
+  <%= @study_group.website %>
+</p>
+
+<p>
+  <b>Leader:</b>
+  <%= @study_group.leader_id %>
+</p>
+
+<p>
+  <b>Meeting day:</b>
+  <%= @study_group.meeting_day %>
+</p>
+
+<p>
+  <b>Max students:</b>
+  <%= @study_group.max_students %>
+</p>
+
+<p>
+  <b>Educational resource:</b>
+  <%= @study_group.educational_resource_id %>
+</p>
+
+
+<%= link_to 'Edit', edit_study_group_path(@study_group) %> |
+<%= link_to 'Back', study_groups_path %>

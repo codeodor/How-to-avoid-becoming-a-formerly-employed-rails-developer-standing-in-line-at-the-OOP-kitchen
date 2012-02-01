@@ -1,0 +1,15 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <b>Name:</b>
+  <%= @educational_resource.name %>
+</p>
+
+<p>
+  <b>Description:</b>
+  <%= @educational_resource.description %>
+</p>
+
+
+<%= link_to 'Edit', edit_educational_resource_path(@educational_resource) %> |
+<%= link_to 'Back', educational_resources_path %>

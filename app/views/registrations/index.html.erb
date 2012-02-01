@@ -1,0 +1,43 @@
+<h1>Listing registrations</h1>
+
+<table>
+  <tr>
+    <th>Payment status</th>
+    <th>Approved</th>
+    <th>Teaching assistant</th>
+    <th>Registration fee</th>
+    <th>User</th>
+    <th>Section</th>
+    <th>Study group</th>
+    <th>Class coordinator</th>
+    <th>Study group leader</th>
+    <th>Signup reason</th>
+    <th>Scholarship code</th>
+    <th></th>
+    <th></th>
+    <th></th>
+  </tr>
+
+<% @registrations.each do |registration| %>
+  <tr>
+    <td><%= registration.payment_status %></td>
+    <td><%= registration.approved %></td>
+    <td><%= registration.teaching_assistant %></td>
+    <td><%= registration.registration_fee %></td>
+    <td><%= registration.user_id %></td>
+    <td><%= registration.section_id %></td>
+    <td><%= registration.study_group_id %></td>
+    <td><%= registration.class_coordinator %></td>
+    <td><%= registration.study_group_leader %></td>
+    <td><%= registration.signup_reason_id %></td>
+    <td><%= registration.scholarship_code_id %></td>
+    <td><%= link_to 'Show', registration %></td>
+    <td><%= link_to 'Edit', edit_registration_path(registration) %></td>
+    <td><%= link_to 'Destroy', registration, confirm: 'Are you sure?', method: :delete %></td>
+  </tr>
+<% end %>
+</table>
+
+<br />
+
+<%= link_to 'New Registration', new_registration_path %>

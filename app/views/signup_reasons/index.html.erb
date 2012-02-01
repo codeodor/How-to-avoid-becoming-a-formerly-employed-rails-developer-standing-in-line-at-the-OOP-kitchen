@@ -1,0 +1,23 @@
+<h1>Listing signup_reasons</h1>
+
+<table>
+  <tr>
+    <th>Name</th>
+    <th></th>
+    <th></th>
+    <th></th>
+  </tr>
+
+<% @signup_reasons.each do |signup_reason| %>
+  <tr>
+    <td><%= signup_reason.name %></td>
+    <td><%= link_to 'Show', signup_reason %></td>
+    <td><%= link_to 'Edit', edit_signup_reason_path(signup_reason) %></td>
+    <td><%= link_to 'Destroy', signup_reason, confirm: 'Are you sure?', method: :delete %></td>
+  </tr>
+<% end %>
+</table>
+
+<br />
+
+<%= link_to 'New Signup reason', new_signup_reason_path %>

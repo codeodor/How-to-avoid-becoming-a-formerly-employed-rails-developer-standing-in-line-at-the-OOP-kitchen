@@ -1,0 +1,49 @@
+<h1>Listing sections</h1>
+
+<table>
+  <tr>
+    <th>Course</th>
+    <th>Name</th>
+    <th>Description</th>
+    <th>Registration status</th>
+    <th>Start date</th>
+    <th>End date</th>
+    <th>Registration fee</th>
+    <th>Class length</th>
+    <th>Max students</th>
+    <th>Study group size for official status</th>
+    <th>Max study group size</th>
+    <th>Registration message</th>
+    <th>Show message</th>
+    <th>Resource list</th>
+    <th></th>
+    <th></th>
+    <th></th>
+  </tr>
+
+<% @sections.each do |section| %>
+  <tr>
+    <td><%= section.course_id %></td>
+    <td><%= section.name %></td>
+    <td><%= section.description %></td>
+    <td><%= section.registration_status %></td>
+    <td><%= section.start_date %></td>
+    <td><%= section.end_date %></td>
+    <td><%= section.registration_fee %></td>
+    <td><%= section.class_length %></td>
+    <td><%= section.max_students %></td>
+    <td><%= section.study_group_size_for_official_status %></td>
+    <td><%= section.max_study_group_size %></td>
+    <td><%= section.registration_message %></td>
+    <td><%= section.show_message %></td>
+    <td><%= section.resource_list_id %></td>
+    <td><%= link_to 'Show', section %></td>
+    <td><%= link_to 'Edit', edit_section_path(section) %></td>
+    <td><%= link_to 'Destroy', section, confirm: 'Are you sure?', method: :delete %></td>
+  </tr>
+<% end %>
+</table>
+
+<br />
+
+<%= link_to 'New Section', new_section_path %>

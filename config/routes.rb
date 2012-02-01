@@ -1,4 +1,20 @@
 RailsOopPresentation::Application.routes.draw do
+  resources :study_groups
+
+  resources :signup_reasons
+
+  resources :registrations
+
+  resources :educational_resources
+
+  resources :resource_lists
+
+  resources :sections
+
+  resources :courses
+
+  resources :departments
+
   root :to => "home#index"
   
   devise_for :users

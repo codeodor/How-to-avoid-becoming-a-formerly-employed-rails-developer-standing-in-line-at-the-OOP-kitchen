@@ -1,0 +1,61 @@
+<%= form_for(@registration) do |f| %>
+  <% if @registration.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(@registration.errors.count, "error") %> prohibited this registration from being saved:</h2>
+
+      <ul>
+      <% @registration.errors.full_messages.each do |msg| %>
+        <li><%= msg %></li>
+      <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <div class="field">
+    <%= f.label :payment_status %><br />
+    <%= f.number_field :payment_status %>
+  </div>
+  <div class="field">
+    <%= f.label :approved %><br />
+    <%= f.check_box :approved %>
+  </div>
+  <div class="field">
+    <%= f.label :teaching_assistant %><br />
+    <%= f.check_box :teaching_assistant %>
+  </div>
+  <div class="field">
+    <%= f.label :registration_fee %><br />
+    <%= f.text_field :registration_fee %>
+  </div>
+  <div class="field">
+    <%= f.label :user_id %><br />
+    <%= f.number_field :user_id %>
+  </div>
+  <div class="field">
+    <%= f.label :section_id %><br />
+    <%= f.number_field :section_id %>
+  </div>
+  <div class="field">
+    <%= f.label :study_group_id %><br />
+    <%= f.number_field :study_group_id %>
+  </div>
+  <div class="field">
+    <%= f.label :class_coordinator %><br />
+    <%= f.check_box :class_coordinator %>
+  </div>
+  <div class="field">
+    <%= f.label :study_group_leader %><br />
+    <%= f.check_box :study_group_leader %>
+  </div>
+  <div class="field">
+    <%= f.label :signup_reason_id %><br />
+    <%= f.number_field :signup_reason_id %>
+  </div>
+  <div class="field">
+    <%= f.label :scholarship_code_id %><br />
+    <%= f.number_field :scholarship_code_id %>
+  </div>
+  <div class="actions">
+    <%= f.submit %>
+  </div>
+<% end %>
