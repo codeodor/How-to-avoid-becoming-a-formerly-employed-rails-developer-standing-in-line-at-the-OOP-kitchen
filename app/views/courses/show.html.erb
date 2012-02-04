@@ -1,30 +1,11 @@
-<p id="notice"><%= notice %></p>
-
-<p>
-  <b>Department:</b>
-  <%= @course.department_id %>
-</p>
-
-<p>
-  <b>Name:</b>
-  <%= @course.name %>
-</p>
-
-<p>
-  <b>Course number:</b>
-  <%= @course.course_number %>
-</p>
-
-<p>
-  <b>Description:</b>
-  <%= @course.description %>
-</p>
-
+<h1><%= @course.department.name %> -> <%= @course.name %> (<%= @course.course_number %>)</h1>
 <p>
   <b>Website:</b>
-  <%= @course.website %>
+  <%= link_to @course.name, @course.website %>
 </p>
 
-
-<%= link_to 'Edit', edit_course_path(@course) %> |
-<%= link_to 'Back', courses_path %>
+<%= @course.description %>
+<br/><br/>
+<%= link_to 'Sections', department_course_sections_path(@course.department, @course) %> |
+<%= link_to 'Edit', edit_department_course_path(@course.department) %> |
+<%= link_to "Back to courses in #{@course.department.name}", department_courses_path(@course.department) %>

@@ -1,4 +1,4 @@
-<%= form_for(@section) do |f| %>
+<%= form_for([@section.course.department, @section.course, @section]) do |f| %>
   <% if @section.errors.any? %>
     <div id="error_explanation">
       <h2><%= pluralize(@section.errors.count, "error") %> prohibited this section from being saved:</h2>
@@ -13,7 +13,7 @@
 
   <div class="field">
     <%= f.label :course_id %><br />
-    <%= f.number_field :course_id %>
+    <%= f.collection_select :course_id, current_user.admin_departments.find(params[:department_id]).courses, :id, :name, :include_blank=>'Select Course' %>
   </div>
   <div class="field">
     <%= f.label :name %><br />
@@ -25,7 +25,7 @@
   </div>
   <div class="field">
     <%= f.label :registration_status %><br />
-    <%= f.number_field :registration_status %>
+    <%= f.select :registration_status, Section::RegistrationStatuses.name_select, :include_blank=>'Select Status' %>
   </div>
   <div class="field">
     <%= f.label :start_date %><br />
@@ -41,7 +41,7 @@
   </div>
   <div class="field">
     <%= f.label :class_length %><br />
-    <%= f.number_field :class_length %>
+    <%= f.number_field :class_length %> minutes
   </div>
   <div class="field">
     <%= f.label :max_students %><br />
@@ -65,7 +65,7 @@
   </div>
   <div class="field">
     <%= f.label :resource_list_id %><br />
-    <%= f.number_field :resource_list_id %>
+    <%= f.collection_select :resource_list_id, @section.course.department.resource_lists, :id, :name, :include_blank=>'Select Resource List' %>
   </div>
   <div class="actions">
     <%= f.submit %>

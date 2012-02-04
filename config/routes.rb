@@ -1,19 +1,18 @@
 RailsOopPresentation::Application.routes.draw do
-  resources :study_groups
-
   resources :signup_reasons
 
-  resources :registrations
+  resources :resource_lists do
+    resources :educational_resources
+  end
 
-  resources :educational_resources
-
-  resources :resource_lists
-
-  resources :sections
-
-  resources :courses
-
-  resources :departments
+  resources :departments do 
+    resources :courses do 
+      resources :sections do 
+        resources :registrations
+        resources :study_groups
+      end
+    end
+  end
 
   root :to => "home#index"
   

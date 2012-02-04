@@ -2,7 +2,7 @@ class SectionsController < ApplicationController
   # GET /sections
   # GET /sections.json
   def index
-    @sections = Section.all
+    @sections = current_user.admin_departments.find(params[:department_id]).courses.sections
 
     respond_to do |format|
       format.html # index.html.erb
@@ -24,8 +24,8 @@ class SectionsController < ApplicationController
   # GET /sections/new
   # GET /sections/new.json
   def new
-    @section = Section.new
-
+    @section = Section.new(course_id: params[:course_id])
+    
     respond_to do |format|
       format.html # new.html.erb
       format.json { render json: @section }
