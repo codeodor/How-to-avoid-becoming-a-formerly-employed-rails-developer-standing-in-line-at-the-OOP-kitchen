@@ -6,6 +6,8 @@
 
 <%= @course.description %>
 <br/><br/>
-<%= link_to 'Sections', department_course_sections_path(@course.department, @course) %> |
 <%= link_to 'Edit', edit_department_course_path(@course.department) %> |
 <%= link_to "Back to courses in #{@course.department.name}", department_courses_path(@course.department) %>
+
+<h2>Current Sections</h2>
+<%= render partial: 'sections/in_course', :locals => {:sections => @course.current_sections }%>

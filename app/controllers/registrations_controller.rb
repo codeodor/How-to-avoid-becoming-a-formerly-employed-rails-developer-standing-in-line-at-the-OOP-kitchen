@@ -24,7 +24,7 @@ class RegistrationsController < ApplicationController
   # GET /registrations/new
   # GET /registrations/new.json
   def new
-    @registration = Registration.new
+    @registration = Registration.new(section_id: params[:section_id])
 
     respond_to do |format|
       format.html # new.html.erb

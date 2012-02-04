@@ -1,75 +1,29 @@
-<p id="notice"><%= notice %></p>
-
-<p>
-  <b>Course:</b>
-  <%= @section.course_id %>
-</p>
-
-<p>
-  <b>Name:</b>
-  <%= @section.name %>
-</p>
-
-<p>
-  <b>Description:</b>
-  <%= @section.description %>
-</p>
-
+<h1><%= @section.full_name %></h1>
+<%= @section.description %><br/>
+<%= @section.start_date %> through <%= @section.end_date %>
 <p>
   <b>Registration status:</b>
-  <%= @section.registration_status %>
+  <%= Section::RegistrationStatuses[@section.registration_status] %> - <%= number_to_currency @section.registration_fee %>
 </p>
-
-<p>
-  <b>Start date:</b>
-  <%= @section.start_date %>
-</p>
-
-<p>
-  <b>End date:</b>
-  <%= @section.end_date %>
-</p>
-
-<p>
-  <b>Registration fee:</b>
-  <%= @section.registration_fee %>
-</p>
-
 <p>
   <b>Class length:</b>
   <%= @section.class_length %>
 </p>
-
 <p>
   <b>Max students:</b>
   <%= @section.max_students %>
 </p>
-
 <p>
-  <b>Study group size for official status:</b>
-  <%= @section.study_group_size_for_official_status %>
+  <b>Enrollment Count:</b>
+  <%= @section.registrations.count %>
 </p>
+<%= link_to 'Edit', edit_department_course_section_path(@section.course.department, @section.course, @section) %> |
+<%= link_to "Back to #{@section.course.name}", department_course_path(@section.course.department, @section.course) %>
 
-<p>
-  <b>Max study group size:</b>
-  <%= @section.max_study_group_size %>
+<br/><br/>
+
+<h2>Register for <%= @section.full_name %></h2>
+<p style="background-color: yellow;">  
+  <%= @section.registration_message if @section.show_message? %>
 </p>
-
-<p>
-  <b>Registration message:</b>
-  <%= @section.registration_message %>
-</p>
-
-<p>
-  <b>Show message:</b>
-  <%= @section.show_message %>
-</p>
-
-<p>
-  <b>Resource list:</b>
-  <%= @section.resource_list_id %>
-</p>
-
-
-<%= link_to 'Edit', edit_section_path(@section) %> |
-<%= link_to 'Back', sections_path %>
+<%= button_to "Register Now", new_department_course_section_registration_path(@section.course.department, @section.course, @section), :method=>:get %>

@@ -2,11 +2,12 @@
 <%= @department.description %>
 <br/><br/>
 <% @department.courses.each_with_index do |course, i| %>
-  <%= link_to course.name course_path(course) %> <%= "|" if i < @department.courses.count - 1 %>
+  <%= "Courses: " if i == 0 %>
+  <%= link_to course.name, department_course_path(@department, course) %> <%= "|" if i < @department.courses.count - 1 %>
 <% end %>
 <% if @department.courses.count > 0 %>
   <br/><br/>
 <% end %>
 <%= link_to "Add a course", department_courses_path(@department) %> |
-<%= link_to "Edit #{@department.name}", edit_department_path(@department) %> |
+<%= link_to "Edit #{@department.name} Department", edit_department_path(@department) %> |
 <%= link_to 'Back to departments list', departments_path %>

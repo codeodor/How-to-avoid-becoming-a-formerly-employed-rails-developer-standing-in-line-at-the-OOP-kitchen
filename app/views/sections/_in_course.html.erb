@@ -1,0 +1,28 @@
+<table>
+  <tr>
+    <th>Section</th>
+    <th>End Date</th>
+    <th>Fee</th>
+    <th>Paid Registrations</th>
+    <th>Total Registrations</th>
+  </tr>
+<% sections.each_with_index do |section, i| %>
+  <tr>
+    <td>
+      <%= link_to section.full_name, [section.course.department, section.course, section] %>
+    </td>
+    <td>
+      <%= section.end_date %>
+    </td>
+    <td> 
+      <%= section.registration_fee %>
+    </td>
+    <td>
+      <%= section.registrations.select{|r| r.paid? }.count %>
+    </td>
+    <td>
+      <%= section.registrations.count %>
+    </td>
+  </tr>
+<% end %>
+</table>

@@ -2,7 +2,7 @@ class SectionsController < ApplicationController
   # GET /sections
   # GET /sections.json
   def index
-    @sections = current_user.admin_departments.find(params[:department_id]).courses.sections
+    @sections = current_user.admin_departments.find(params[:department_id]).courses.find(params[:course_id]).sections
 
     respond_to do |format|
       format.html # index.html.erb
@@ -44,7 +44,7 @@ class SectionsController < ApplicationController
 
     respond_to do |format|
       if @section.save
-        format.html { redirect_to @section, notice: 'Section was successfully created.' }
+        format.html { redirect_to [@section.course.department, @section.course, @section], notice: 'Section was successfully created.' }
         format.json { render json: @section, status: :created, location: @section }
       else
         format.html { render action: "new" }
@@ -60,7 +60,7 @@ class SectionsController < ApplicationController
 
     respond_to do |format|
       if @section.update_attributes(params[:section])
-        format.html { redirect_to @section, notice: 'Section was successfully updated.' }
+        format.html { redirect_to [@section.course.department, @section.course, @section], notice: 'Section was successfully updated.' }
         format.json { head :no_content }
       else
         format.html { render action: "edit" }
@@ -76,7 +76,7 @@ class SectionsController < ApplicationController
     @section.destroy
 
     respond_to do |format|
-      format.html { redirect_to sections_url }
+      format.html { redirect_to department_course_sections_path(@section.course.department, @section.course) }
       format.json { head :no_content }
     end
   end
