@@ -6,6 +6,7 @@ RailsOopPresentation::Application.routes.draw do
   end
 
   resources :departments do 
+    resources :scholarship_codes
     resources :courses do 
       resources :sections do 
         resources :registrations

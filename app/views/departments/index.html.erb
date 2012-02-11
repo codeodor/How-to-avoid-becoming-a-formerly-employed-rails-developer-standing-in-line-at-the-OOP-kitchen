@@ -4,7 +4,7 @@
   <tr>
     <th>Name</th>
     <th>Description</th>
-    <th>User</th>
+    <th>Head</th>
     <th></th>
     <th></th>
     <th></th>
@@ -14,7 +14,7 @@
   <tr>
     <td><%= department.name %></td>
     <td><%= department.description %></td>
-    <td><%= department.user_id %></td>
+    <td><%= department.user.email %></td>
     <td><%= link_to 'Show', department %></td>
     <td><%= link_to 'Edit', edit_department_path(department) %></td>
     <td><%= link_to 'Destroy', department, confirm: 'Are you sure?', method: :delete %></td>

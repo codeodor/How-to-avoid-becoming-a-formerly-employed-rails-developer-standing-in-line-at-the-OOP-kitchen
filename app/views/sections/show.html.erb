@@ -17,13 +17,29 @@
   <b>Enrollment Count:</b>
   <%= @section.registrations.count %>
 </p>
-<%= link_to 'Edit', edit_department_course_section_path(@section.course.department, @section.course, @section) %> |
-<%= link_to "Back to #{@section.course.name}", department_course_path(@section.course.department, @section.course) %>
 
-<br/><br/>
+<% if current_user && current_user.admin_departments.include?(@section.course.department) %>
+  <%= link_to 'Edit', edit_department_course_section_path(@section.course.department, @section.course, @section) %> |
+  <%= link_to "Back to #{@section.course.name}", department_course_path(@section.course.department, @section.course) %>
+  <br/><br/>
+<% end %>
 
+<% if @section.registration_status == Section::RegistrationStatuses[:OPEN][:id] ||  @section.registration_status == Section::RegistrationStatuses[:INTEREST][:id] %>
 <h2>Register for <%= @section.full_name %></h2>
 <p style="background-color: yellow;">  
   <%= @section.registration_message if @section.show_message? %>
 </p>
+
 <%= button_to "Register Now", new_department_course_section_registration_path(@section.course.department, @section.course, @section), :method=>:get %>
+<% else %>
+  Registration is now closed.
+<% end %>
+
+<% if current_user && current_user.admin? %>
+  <% if @section.registrations.count > 0 %>
+    <h2>Registrations for this section</h2>
+    <% @section.registrations.each do |reg| %>
+      <%= reg.user.email if reg.user %><br/>
+    <% end %>
+  <% end %>
+<% end %>

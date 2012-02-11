@@ -1,0 +1,29 @@
+<h1>Listing scholarship codes</h1>
+
+<table>
+  <tr>
+    <th>Department</th>
+    <th>Code</th>
+    <th>Discount type</th>
+    <th>Discount amount</th>
+    <th></th>
+    <th></th>
+    <th></th>
+  </tr>
+
+<% @scholarship_codes.each do |scholarship_code| %>
+  <tr>
+    <td><%= scholarship_code.department.name %></td>
+    <td><%= scholarship_code.code %></td>
+    <td><%= ScholarshipCode::DiscountTypes[scholarship_code.discount_type] %></td>
+    <td><%= scholarship_code.discount_amount %></td>
+    <td><%= link_to 'Show', [scholarship_code.department, scholarship_code] %></td>
+    <td><%= link_to 'Edit', edit_department_scholarship_code_path(scholarship_code.department, scholarship_code) %></td>
+    <td><%= link_to 'Destroy', [scholarship_code.department, scholarship_code], confirm: 'Are you sure?', method: :delete %></td>
+  </tr>
+<% end %>
+</table>
+
+<br />
+
+<%= link_to 'New Scholarship code', new_department_scholarship_code_path(params[:department_id]) %>

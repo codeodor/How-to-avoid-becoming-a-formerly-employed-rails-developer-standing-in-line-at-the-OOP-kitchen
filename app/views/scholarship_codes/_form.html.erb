@@ -1,0 +1,33 @@
+<%= form_for([@scholarship_code.department, @scholarship_code]) do |f| %>
+  <% if @scholarship_code.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(@scholarship_code.errors.count, "error") %> prohibited this scholarship_code from being saved:</h2>
+
+      <ul>
+      <% @scholarship_code.errors.full_messages.each do |msg| %>
+        <li><%= msg %></li>
+      <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <div class="field">
+    <%= f.label :department_id %><br />
+    <%= f.collection_select :department_id, current_user.departments, :id, :name, :include_blank=>'Select One' %>
+  </div>
+  <div class="field">
+    <%= f.label :code %><br />
+    <%= f.text_field :code %>
+  </div>
+  <div class="field">
+    <%= f.label :discount_type %><br />
+    <%= f.select :discount_type, ScholarshipCode::DiscountTypes.name_select, :include_blank=>'Select Status' %>
+  </div>
+  <div class="field">
+    <%= f.label :discount_amount %><br />
+    <%= f.text_field :discount_amount %>
+  </div>
+  <div class="actions">
+    <%= f.submit %>
+  </div>
+<% end %>

@@ -7,11 +7,16 @@
   <%= csrf_meta_tags %>
 </head>
 <body>
-  <%= link_to "Home", root_path %> |
-  <%= link_to "Departments", departments_path %>
-  
+  <%= link_to "Home", root_path %> 
   <% if current_user %>
-    | <%= link_to "Sign Out", destroy_user_session_path, :method=>:delete %>
+    |
+    <% if current_user.admin? %>
+      <%= link_to "Departments", departments_path %> |
+      <%= link_to "Signup Reasons", signup_reasons_path %> |
+    <% end %>
+    <%= link_to "Sign Out", destroy_user_session_path, :method=>:delete %>
+  <% elsif !current_user %>
+    | <%= link_to "Sign In", new_user_session_path %>
   <% end %>
   
   <p id="notice"><%= notice %></p>

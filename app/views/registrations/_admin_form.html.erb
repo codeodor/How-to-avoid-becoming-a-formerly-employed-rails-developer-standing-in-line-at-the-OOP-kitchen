@@ -1,0 +1,53 @@
+
+<div class="field">
+  <%= f.label :payment_status %><br />
+  <%= f.select :payment_status, Registration::PaymentStatuses.name_select, :include_blank=>'Select Status' %>
+</div>
+<div class="field">
+  <%= f.label :approved %><br />
+  <%= f.check_box :approved %>
+</div>
+<div class="field">
+  <%= f.label :teaching_assistant %><br />
+  <%= f.check_box :teaching_assistant %>
+</div>
+<div class="field">
+  <%= f.label :registration_fee %><br />
+  <%= f.text_field :registration_fee %>
+</div>
+<div class="field">
+  <%= f.label :user_id %><br />
+  <%= f.collection_select :user_id, User.all, :id, :email, :include_blank=>'Select student' %>
+</div>
+<div class="field">
+  <%= f.label :section_id %><br />
+  <%= @registration.section.name %>
+</div>
+<div class="field">
+  <%= f.label :study_group_id %><br />
+  <%= f.collection_select :study_group_id, StudyGroup.where(:section_id=>@registration.section_id), :id, :name, :include_blank=>'Select one or create one below' %>
+</div>
+<% unless @registration.section.registration_status == Section::RegistrationStatuses[:NO_STUDY_GROUPS][:id] %>
+or 
+<div class="field">
+  <%= label_tag :study_group_name, "Create a new study group" %><br />
+  <%= text_field :study_group, :name %>
+  <%= hidden_field :study_group, :section_id, :value=>@registration.section_id %>
+</div>
+<% end %>
+<div class="field">
+  <%= f.label :class_coordinator %><br />
+  <%= f.check_box :class_coordinator %>
+</div>
+<div class="field">
+  <%= f.label :study_group_leader %><br />
+  <%= f.check_box :study_group_leader %>
+</div>
+<div class="field">
+  <%= f.label :signup_reason_id %><br />
+  <%= f.collection_select :signup_reason_id, SignupReason.all, :id, :name, :include_blank=>'Select signup reason' %>
+</div>
+<div class="field">
+  Scholarship Code<br/>
+  <input type="text" name="scholarship_code" /> 
+</div>

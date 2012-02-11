@@ -4,7 +4,8 @@ class ApplicationController < ActionController::Base
   
   def check_authentication
     exempt_controllers = ["HomeController", "Devise::SessionsController"]
-    authenticate_user! unless exempt_controllers.include?(self.class.name)
+    exempt_actions = ['sections#show']
+    authenticate_user! unless exempt_controllers.include?(self.class.name) || exempt_actions.include?("#{controller_name}##{action_name}")
   end
     
   

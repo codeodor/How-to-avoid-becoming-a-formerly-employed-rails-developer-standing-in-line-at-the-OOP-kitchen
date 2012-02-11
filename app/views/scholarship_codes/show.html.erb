@@ -1,0 +1,23 @@
+<p>
+  <b>Department:</b>
+  <%= @scholarship_code.department.name %>
+</p>
+
+<p>
+  <b>Code:</b>
+  <%= @scholarship_code.code %>
+</p>
+
+<p>
+  <b>Discount type:</b>
+  <%= ScholarshipCode::DiscountTypes[@scholarship_code.discount_type] %>
+</p>
+
+<p>
+  <b>Discount amount:</b>
+  <%= @scholarship_code.discount_amount %>
+</p>
+
+
+<%= link_to 'Edit', edit_department_scholarship_code_path(@scholarship_code.department, @scholarship_code) %> |
+<%= link_to 'Back', department_scholarship_codes_path(@scholarship_code.department) %>

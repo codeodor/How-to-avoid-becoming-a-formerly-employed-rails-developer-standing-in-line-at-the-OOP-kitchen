@@ -1,1 +1,29 @@
-Welcome to course selector!
+<h1>Welcome to course selector!</h1>
+
+<h2>Sections Open for Registration</h2>
+<ul>
+<% @sections_open_for_registration.each do |section| %>
+  <li><%= link_to section.full_name, [section.course.department, section.course, section] %></li>
+<% end %>
+</ul>
+
+
+<h2>Sections Going on Right Now</h2>
+<ul>
+<% @current_sections.each do |section| %>
+  <li><%= link_to section.full_name, [section.course.department, section.course, section] %></li>
+<% end %>
+</ul>
+
+<% if current_user %>
+<h2>Your Registrations</h2>
+  <% if current_user.registrations.count > 0 %>
+  <ul>
+  <% current_user.registrations.each do |reg| %>
+    <li><%= link_to section.full_name, reg %></li>
+  <% end %>
+  </ul>
+  <% else %>
+    You are not currently enrolled in any courses.
+  <% end %>
+<% end %>

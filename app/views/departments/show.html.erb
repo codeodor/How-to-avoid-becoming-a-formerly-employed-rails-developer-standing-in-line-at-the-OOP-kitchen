@@ -8,6 +8,6 @@
 <% if @department.courses.count > 0 %>
   <br/><br/>
 <% end %>
-<%= link_to "Add a course", department_courses_path(@department) %> |
+<%= link_to "Add a course", new_department_course_path(@department) %> |
 <%= link_to "Edit #{@department.name} Department", edit_department_path(@department) %> |
 <%= link_to 'Back to departments list', departments_path %>

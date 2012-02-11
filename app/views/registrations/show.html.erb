@@ -1,8 +1,8 @@
-<p id="notice"><%= notice %></p>
+
 
 <p>
   <b>Payment status:</b>
-  <%= @registration.payment_status %>
+  <%= Registration::PaymentStatuses[@registration.payment_status] %>
 </p>
 
 <p>
@@ -22,17 +22,17 @@
 
 <p>
   <b>User:</b>
-  <%= @registration.user_id %>
+  <%= @registration.user.email %>
 </p>
 
 <p>
   <b>Section:</b>
-  <%= @registration.section_id %>
+  <%= @registration.section.name %>
 </p>
 
 <p>
   <b>Study group:</b>
-  <%= @registration.study_group_id %>
+  <%= @registration.study_group.name %>
 </p>
 
 <p>
@@ -47,14 +47,14 @@
 
 <p>
   <b>Signup reason:</b>
-  <%= @registration.signup_reason_id %>
+  <%= @registration.signup_reason.name %>
 </p>
 
 <p>
   <b>Scholarship code:</b>
-  <%= @registration.scholarship_code_id %>
+  <%= @registration.scholarship_code ? @registration.scholarship_code.code : "None"  %>
 </p>
 
 
-<%= link_to 'Edit', edit_registration_path(@registration) %> |
-<%= link_to 'Back', registrations_path %>
+<%= link_to 'Edit', edit_department_course_section_registration_path(@registration.section.course.department, @registration.section.course, @registration.section, @registration) %> |
+<%= link_to 'Back', department_course_section_path(@registration.section.course.department, @registration.section.course, @registration.section) %>

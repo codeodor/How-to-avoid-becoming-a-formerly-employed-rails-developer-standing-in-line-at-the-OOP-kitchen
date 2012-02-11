@@ -1,6 +1,7 @@
 class Section < ActiveRecord::Base
   belongs_to :course
   has_many :registrations
+  has_many :study_groups
   
   class RegistrationStatuses < Enumeration
     self.add_item(:RESTRICTED, {:id => 0, :name => 'Restricted'})

@@ -1,0 +1,23 @@
+<h1>You are registering for <%= @registration.section.full_name %></h1>
+
+
+<div class="field">
+  <%= f.label :study_group_id, "Join an existing study group" %><br />
+  <%= f.collection_select :study_group_id, @registration.section.study_groups, :id, :name, :include_blank=>'Select a group' %>
+</div>
+<% unless @registration.section.registration_status == Section::RegistrationStatuses[:NO_STUDY_GROUPS][:id] %>
+or 
+<div class="field">
+  <%= label_tag :study_group_name, "Create a new study group" %><br />
+  <%= text_field :study_group, :name %>
+  <%= hidden_field :study_group, :section_id, :value=>@registration.section_id %>
+</div>
+<% end %>
+<div class="field">
+  <%= f.label :signup_reason_id %><br />
+  <%= f.collection_select :signup_reason_id, SignupReason.order(:name), :id, :name, :include_blank=>'Select a reason' %>
+</div>
+<div class="field">
+  Scholarship Code<br/>
+  <input type="text" name="scholarship_code" /> 
+</div>

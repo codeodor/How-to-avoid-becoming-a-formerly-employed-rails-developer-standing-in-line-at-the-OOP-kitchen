@@ -19,7 +19,12 @@
     <%= f.label :description %><br />
     <%= f.text_area :description %>
   </div>
-
+  <% unless @department.new_record? %>
+  <div class="field">
+    Scholarships<br />
+    <%= link_to "Manage Scholarship Codes", department_scholarship_codes_path(@department) %>
+  </div>
+  <% end %>
   <div class="actions">
     <%= f.submit %>
   </div>

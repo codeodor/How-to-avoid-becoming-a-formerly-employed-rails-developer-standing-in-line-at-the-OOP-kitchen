@@ -1,0 +1,13 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/Fixtures.html
+
+one:
+  department_id: 1
+  code: MyString
+  discount_type: 1
+  dicount_amount: 1.5
+
+two:
+  department_id: 1
+  code: MyString
+  discount_type: 1
+  dicount_amount: 1.5
