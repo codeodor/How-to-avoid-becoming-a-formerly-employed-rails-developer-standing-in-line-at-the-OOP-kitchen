@@ -21,3 +21,8 @@ Any ideas you have on how to improve this, or other techniques you'd like to see
 If you'd rather have me demonstrate a technique, get in touch with me at (insert contact info here) and tell me your idea.
 
 I'll keep a list of the major fixes here, so you can refer to them easily.
+
+Tentative workflow will be:
+1. Original bad code will be in its own branch, so develop the example of what needs to be fixed on that branch.
+2. Create an issue that points out the bad code, develop a fix for it, do a pull request so the fix is highlighted, then merge it back into master.
+3. Except at the beginning, the master branch should be a good example for people to look at.
