@@ -31,13 +31,13 @@
     <td><%= registration.study_group_leader %></td>
     <td><%= registration.signup_reason_id %></td>
     <td><%= registration.scholarship_code_id %></td>
-    <td><%= link_to 'Show', registration %></td>
-    <td><%= link_to 'Edit', edit_registration_path(registration) %></td>
-    <td><%= link_to 'Destroy', registration, confirm: 'Are you sure?', method: :delete %></td>
+    <td><%= link_to 'Show', [registration.section.course.department, registration.section.course, registration.section, registration] %></td>
+    <td><%= link_to 'Edit', edit_department_course_section_registration_path(registration.section.course.department, registration.section.course, registration.section, registration) %></td>
+    <td><%= link_to 'Destroy', [registration.section.course.department, registration.section.course, registration.section, registration], confirm: 'Are you sure?', method: :delete %></td>
   </tr>
 <% end %>
 </table>
 
 <br />
 
-<%= link_to 'New Registration', new_registration_path %>
+<%= link_to 'New Registration', new_department_course_section_registration_path(params[:department_id], params[:course_id], params[:section_id]) %>
