@@ -25,13 +25,13 @@
     <td><%= study_group.meeting_day %></td>
     <td><%= study_group.max_students %></td>
     <td><%= study_group.educational_resource_id %></td>
-    <td><%= link_to 'Show', study_group %></td>
-    <td><%= link_to 'Edit', edit_study_group_path(study_group) %></td>
-    <td><%= link_to 'Destroy', study_group, confirm: 'Are you sure?', method: :delete %></td>
+    <td><%= link_to 'Show', [study_group.section.course.department, study_group.section.course, study_group.section, study_group] %></td>
+    <td><%= link_to 'Edit', edit_department_course_section_study_group_path(study_group.section.course.department, study_group.section.course, study_group.section, study_group) %></td>
+    <td><%= link_to 'Destroy', [study_group.section.course.department, study_group.section.course, study_group.section, study_group], confirm: 'Are you sure?', method: :delete %></td>
   </tr>
 <% end %>
 </table>
 
 <br />
 
-<%= link_to 'New Study group', new_study_group_path %>
+<%= link_to 'New Study group', new_department_course_section_study_group_path(params[:department_id], params[:course_id], params[:section_id]) %>
