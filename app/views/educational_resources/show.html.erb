@@ -11,5 +11,5 @@
 </p>
 
 
-<%= link_to 'Edit', edit_educational_resource_path(@educational_resource) %> |
-<%= link_to 'Back', educational_resources_path %>
+<%= link_to 'Edit', edit_resource_list_educational_resource_path(@educational_resource.resource_list, @educational_resource) %> |
+<%= link_to 'Back', resource_list_educational_resources_path(@educational_resource.resource_list) %>
