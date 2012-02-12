@@ -13,13 +13,13 @@
   <tr>
     <td><%= educational_resource.name %></td>
     <td><%= educational_resource.description %></td>
-    <td><%= link_to 'Show', educational_resource %></td>
-    <td><%= link_to 'Edit', edit_educational_resource_path(educational_resource) %></td>
-    <td><%= link_to 'Destroy', educational_resource, confirm: 'Are you sure?', method: :delete %></td>
+    <td><%= link_to 'Show', resource_list_educational_resource_path(educational_resource.resource_list, educational_resource) %></td>
+    <td><%= link_to 'Edit', edit_resource_list_educational_resource_path(educational_resource.resource_list, educational_resource) %></td>
+    <td><%= link_to 'Destroy', [educational_resource.resource_list, educational_resource], confirm: 'Are you sure?', method: :delete %></td>
   </tr>
 <% end %>
 </table>
 
 <br />
 
-<%= link_to 'New Educational resource', new_educational_resource_path %>
+<%= link_to 'New Educational resource', new_resource_list_educational_resource_path(params[:resource_list_id]) %>

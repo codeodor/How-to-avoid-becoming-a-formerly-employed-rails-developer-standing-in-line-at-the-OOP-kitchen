@@ -1,4 +1,4 @@
-<%= form_for(@educational_resource) do |f| %>
+<%= form_for([@educational_resource.resource_list, @educational_resource]) do |f| %>
   <% if @educational_resource.errors.any? %>
     <div id="error_explanation">
       <h2><%= pluralize(@educational_resource.errors.count, "error") %> prohibited this educational_resource from being saved:</h2>
