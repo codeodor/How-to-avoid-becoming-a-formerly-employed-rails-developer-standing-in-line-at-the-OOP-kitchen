@@ -2,6 +2,7 @@ require 'test_helper'
 
 class SignupReasonsControllerTest < ActionController::TestCase
   setup do
+    sign_in users(:admin)
     @signup_reason = signup_reasons(:one)
   end
 

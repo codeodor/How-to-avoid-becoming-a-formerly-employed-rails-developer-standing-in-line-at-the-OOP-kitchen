@@ -2,6 +2,7 @@ require 'test_helper'
 
 class SectionsControllerTest < ActionController::TestCase
   setup do
+    sign_in users(:admin)
     @section = sections(:one)
   end
 

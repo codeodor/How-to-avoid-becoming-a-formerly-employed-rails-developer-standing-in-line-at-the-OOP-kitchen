@@ -2,6 +2,7 @@ require 'test_helper'
 
 class StudyGroupsControllerTest < ActionController::TestCase
   setup do
+    sign_in users(:admin)
     @study_group = study_groups(:one)
   end
 

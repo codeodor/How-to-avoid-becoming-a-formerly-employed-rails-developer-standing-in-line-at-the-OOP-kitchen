@@ -2,6 +2,7 @@ require 'test_helper'
 
 class ScholarshipCodesControllerTest < ActionController::TestCase
   setup do
+    sign_in users(:admin)
     @scholarship_code = scholarship_codes(:one)
   end
 

@@ -2,6 +2,7 @@ require 'test_helper'
 
 class ResourceListsControllerTest < ActionController::TestCase
   setup do
+    sign_in users(:admin)
     @resource_list = resource_lists(:one)
   end
 

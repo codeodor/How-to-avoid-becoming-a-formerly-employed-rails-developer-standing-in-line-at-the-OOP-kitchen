@@ -2,6 +2,7 @@ require 'test_helper'
 
 class RegistrationsControllerTest < ActionController::TestCase
   setup do
+    sign_in users(:admin)
     @registration = registrations(:one)
   end
 

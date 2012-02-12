@@ -2,6 +2,7 @@ require 'test_helper'
 
 class EducationalResourcesControllerTest < ActionController::TestCase
   setup do
+    sign_in users(:admin)
     @educational_resource = educational_resources(:one)
   end
 
