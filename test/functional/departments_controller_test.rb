@@ -3,7 +3,7 @@ require 'test_helper'
 class DepartmentsControllerTest < ActionController::TestCase
   setup do
     sign_in users(:admin)
-    @department = departments(:one)
+    @department = departments(:math)
   end
 
   test "should get index" do

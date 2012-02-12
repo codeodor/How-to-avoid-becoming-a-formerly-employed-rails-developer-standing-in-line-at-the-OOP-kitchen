@@ -1,13 +1,13 @@
 # Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/Fixtures.html
 
 one:
-  department_id: 1
-  code: MyString
+  department: math
+  code: ABC123
   discount_type: 1
   discount_amount: 1.5
 
 two:
-  department_id: 1
-  code: MyString
+  department: science
+  code: CAB333
   discount_type: 1
   discount_amount: 1.5
