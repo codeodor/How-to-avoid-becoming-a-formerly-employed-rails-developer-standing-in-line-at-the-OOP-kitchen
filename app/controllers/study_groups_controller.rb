@@ -24,7 +24,7 @@ class StudyGroupsController < ApplicationController
   # GET /study_groups/new
   # GET /study_groups/new.json
   def new
-    @study_group = StudyGroup.new
+    @study_group = StudyGroup.new(section_id: params[:section_id])
 
     respond_to do |format|
       format.html # new.html.erb
@@ -44,7 +44,7 @@ class StudyGroupsController < ApplicationController
 
     respond_to do |format|
       if @study_group.save
-        format.html { redirect_to @study_group, notice: 'Study group was successfully created.' }
+        format.html { redirect_to [@study_group.section.course.department, @study_group.section.course, @study_group.section, @study_group], notice: 'Study group was successfully created.' }
         format.json { render json: @study_group, status: :created, location: @study_group }
       else
         format.html { render action: "new" }
@@ -60,7 +60,7 @@ class StudyGroupsController < ApplicationController
 
     respond_to do |format|
       if @study_group.update_attributes(params[:study_group])
-        format.html { redirect_to @study_group, notice: 'Study group was successfully updated.' }
+        format.html { redirect_to [@study_group.section.course.department, @study_group.section.course, @study_group.section, @study_group], notice: 'Study group was successfully updated.' }
         format.json { head :no_content }
       else
         format.html { render action: "edit" }
@@ -76,7 +76,7 @@ class StudyGroupsController < ApplicationController
     @study_group.destroy
 
     respond_to do |format|
-      format.html { redirect_to study_groups_url }
+      format.html { redirect_to department_course_section_study_groups_url(@study_group.section.course.department, @study_group.section.course, @study_group.section) }
       format.json { head :no_content }
     end
   end
