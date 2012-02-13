@@ -13,6 +13,11 @@ RailsOopPresentation::Application.routes.draw do
         resources :study_groups
       end
     end
+    
+    collection do 
+      get :invoice
+      post :invoice, :action=>'create_invoices'
+    end
   end
 
   root :to => "home#index"
