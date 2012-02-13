@@ -24,6 +24,15 @@ class ScholarshipCodesControllerTest < ActionController::TestCase
 
     assert_redirected_to department_scholarship_code_path(@scholarship_code.department, assigns(:scholarship_code))
   end
+  
+  test "should show new when create scholarship_code fails" do
+    @scholarship_code.code = ""
+    assert_difference('ScholarshipCode.count', 0) do
+      post :create, scholarship_code: @scholarship_code.attributes, department_id: @scholarship_code.department
+    end
+
+    assert_template :new
+  end
 
   test "should show scholarship_code" do
     get :show, id: @scholarship_code, department_id: @scholarship_code.department
@@ -38,6 +47,12 @@ class ScholarshipCodesControllerTest < ActionController::TestCase
   test "should update scholarship_code" do
     put :update, id: @scholarship_code, scholarship_code: @scholarship_code.attributes, department_id: @scholarship_code.department
     assert_redirected_to department_scholarship_code_path(@scholarship_code.department, assigns(:scholarship_code))
+  end
+  
+  test "should show edit when update scholarship_code fails" do
+    @scholarship_code.code = ""
+    put :update, id: @scholarship_code, scholarship_code: @scholarship_code.attributes, department_id: @scholarship_code.department
+    assert_template :edit
   end
 
   test "should destroy scholarship_code" do

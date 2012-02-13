@@ -24,6 +24,15 @@ class EducationalResourcesControllerTest < ActionController::TestCase
 
     assert_redirected_to resource_list_educational_resource_path(assigns(:educational_resource).resource_list, assigns(:educational_resource))
   end
+  
+  test "should show new when create educational_resource fails" do
+    assert_difference('EducationalResource.count', 0) do
+      @educational_resource.name = ""
+      post :create, educational_resource: @educational_resource.attributes, resource_list_id: @educational_resource.resource_list_id
+    end
+
+    assert_template :new
+  end
 
   test "should show educational_resource" do
     get :show, id: @educational_resource, resource_list_id: @educational_resource.resource_list_id
@@ -38,6 +47,12 @@ class EducationalResourcesControllerTest < ActionController::TestCase
   test "should update educational_resource" do
     put :update, id: @educational_resource, educational_resource: @educational_resource.attributes, resource_list_id: @educational_resource.resource_list_id
     assert_redirected_to resource_list_educational_resource_path(assigns(:educational_resource).resource_list, assigns(:educational_resource))
+  end
+  
+  test "should show edit when update educational_resource fails" do
+    @educational_resource.name = ""
+    put :update, id: @educational_resource, educational_resource: @educational_resource.attributes, resource_list_id: @educational_resource.resource_list_id
+    assert_template :edit
   end
 
   test "should destroy educational_resource" do

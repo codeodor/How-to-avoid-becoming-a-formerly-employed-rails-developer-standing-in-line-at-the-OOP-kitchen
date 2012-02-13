@@ -16,6 +16,13 @@ class ResourceListsControllerTest < ActionController::TestCase
     get :new
     assert_response :success
   end
+  
+  test "should show new when create fails" do
+    assert_difference('ResourceList.count', 0) do
+      post :create, resource_list: {name: ""}
+    end
+    assert_template :new
+  end
 
   test "should create resource_list" do
     assert_difference('ResourceList.count') do
@@ -33,6 +40,11 @@ class ResourceListsControllerTest < ActionController::TestCase
   test "should get edit" do
     get :edit, id: @resource_list
     assert_response :success
+  end
+  
+  test "should show edit when update fails" do
+    put :update, id: @resource_list, resource_list: {name: ""}
+    assert_template :edit
   end
 
   test "should update resource_list" do

@@ -25,6 +25,16 @@ class SectionsControllerTest < ActionController::TestCase
     assert_redirected_to department_course_section_path(assigns(:section).course.department, assigns(:section).course, assigns(:section))
   end
 
+  test "should show new when create section fails" do
+    assert_difference('Section.count', 0) do
+      @section.name = ""
+      post :create, section: @section.attributes, department_id: @section.course.department.id, course_id: @section.course_id
+    end
+
+    assert_template :new
+  end
+  
+
   test "should show section" do
     get :show, id: @section, department_id: @section.course.department.id, course_id: @section.course_id
     assert_response :success
@@ -38,6 +48,12 @@ class SectionsControllerTest < ActionController::TestCase
   test "should update section" do
     put :update, id: @section, section: @section.attributes
     assert_redirected_to department_course_section_path(assigns(:section).course.department, assigns(:section).course, assigns(:section))
+  end
+  
+  test "should show edit when update section fails" do
+    @section.name = ""
+    put :update, id: @section, section: @section.attributes, department_id: @section.course.department.id, course_id: @section.course_id
+    assert_template :edit
   end
 
   test "should destroy section" do

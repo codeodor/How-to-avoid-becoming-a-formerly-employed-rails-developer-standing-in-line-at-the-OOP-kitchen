@@ -24,6 +24,15 @@ class DepartmentsControllerTest < ActionController::TestCase
 
     assert_redirected_to department_path(assigns(:department))
   end
+  
+  test "should show new when create department fails" do
+    assert_difference('Department.count', 0) do
+      @department.name = ""
+      post :create, department: @department.attributes
+    end
+
+    assert_template :new
+  end
 
   test "should show department" do
     get :show, id: @department
@@ -40,11 +49,25 @@ class DepartmentsControllerTest < ActionController::TestCase
     assert_redirected_to department_path(assigns(:department))
   end
 
+  test "should show edit when update department fails" do
+    @department.name = ""
+    put :update, id: @department, department: @department.attributes
+    assert_template :edit
+  end
+
   test "should destroy department" do
     assert_difference('Department.count', -1) do
       delete :destroy, id: @department
     end
 
     assert_redirected_to departments_path
+  end
+  
+  
+  test "should create invoices" do 
+    original_count = Invoice.count
+    post :create_invoices, :month=>3, :year=>2012
+    new_count = Invoice.count
+    assert original_count < new_count
   end
 end
