@@ -24,6 +24,15 @@ class StudyGroupsControllerTest < ActionController::TestCase
 
     assert_redirected_to department_course_section_study_group_path(assigns(:study_group).section.course.department, assigns(:study_group).section.course, assigns(:study_group).section, assigns(:study_group))
   end
+  
+  test "should show new when create study_group fails" do
+    assert_difference('StudyGroup.count', 0) do
+      @study_group.name = ""
+      post :create, study_group: @study_group.attributes, department_id: @study_group.section.course.department.id, course_id: @study_group.section.course_id, section_id: @study_group.section_id
+    end
+
+    assert_template :new
+  end
 
   test "should show study_group" do
     get :show, id: @study_group, department_id: @study_group.section.course.department.id, course_id: @study_group.section.course_id, section_id: @study_group.section_id
@@ -38,6 +47,12 @@ class StudyGroupsControllerTest < ActionController::TestCase
   test "should update study_group" do
     put :update, id: @study_group, study_group: @study_group.attributes, department_id: @study_group.section.course.department.id, course_id: @study_group.section.course_id, section_id: @study_group.section_id
     assert_redirected_to department_course_section_study_group_path(assigns(:study_group).section.course.department, assigns(:study_group).section.course, assigns(:study_group).section, assigns(:study_group))
+  end
+  
+  test "should show edit when update study_group fails" do
+    @study_group.name = ""
+    put :update, id: @study_group, study_group: @study_group.attributes, department_id: @study_group.section.course.department.id, course_id: @study_group.section.course_id, section_id: @study_group.section_id
+    assert_template :edit
   end
 
   test "should destroy study_group" do
