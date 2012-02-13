@@ -20,7 +20,7 @@
   <% if current_user.registrations.count > 0 %>
   <ul>
   <% current_user.registrations.each do |reg| %>
-    <li><%= link_to section.full_name, reg %></li>
+    <li><%= link_to reg.section.full_name, [reg.section.course.department, reg.section.course, reg.section, reg] %></li>
   <% end %>
   </ul>
   <% else %>
