@@ -1,0 +1,5 @@
+<%= form_tag invoice_departments_path do |f| %>
+  <input type="hidden" name="month" value="<%= Time.now.month %>"/>
+  <input type="hidden" name="year" value="<%= Time.now.year %>"/>
+  <%= submit_tag "Create Invoices for #{Time.now.strftime('%B %Y')}" %>
+<% end %>
