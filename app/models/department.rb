@@ -6,6 +6,8 @@ class Department < ActiveRecord::Base
   has_many :sections, :through=>:courses
   has_many :registrations, :through=>:sections
   
+  validates_presence_of :name
+  
   def self.invoice_all(month, year)
     start_date = Time.new(year, month, 1)
     finish_date = start_date.end_of_month
