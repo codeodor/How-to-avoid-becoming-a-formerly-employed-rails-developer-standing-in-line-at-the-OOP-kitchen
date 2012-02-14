@@ -23,6 +23,11 @@ If you'd rather have me demonstrate a technique, get in touch with me at (insert
 I'll keep a list of the major fixes here, so you can refer to them easily.
 
 Tentative workflow will be:
-1. Original bad code will be in its own branch, so develop the example of what needs to be fixed on that branch.
-2. Create an issue that points out the bad code, develop a fix for it, do a pull request so the fix is highlighted, then merge it back into master.
-3. Except at the beginning, the master branch should be a good example for people to look at.
+1. Original bad code is in its own branch: bad_shape. Develop the example of what needs to be fixed on that branch.
+2. Create an issue that points out the bad code
+3. Develop a fix for it in a new branch. Try to remember to prepend #123 (the issue number to commit messages). 
+4. Do a pull request so the fix is highlighted, then merge it back into master.
+5. Except at the beginning, the master branch should be a good example for people to look at.
+
+I'm taking suggestions on how to improve the workflow. It feels clunky. If you don't know how to get in touch with me, try 
+{the contact form on my blog}[http://www.codeodor.com/contact.cfm].
