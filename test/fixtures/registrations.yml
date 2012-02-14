@@ -5,12 +5,12 @@ one:
   approved: false
   teaching_assistant: false
   registration_fee: 1.5
-  user_id: 1
-  section_id: 1
-  study_group_id: 1
+  user: student
+  section: MWF
+  study_group: one
   class_coordinator: false
   study_group_leader: false
-  signup_reason_id: 1
+  signup_reason: one
   scholarship_code_id: 1
 
 two:
@@ -18,10 +18,10 @@ two:
   approved: false
   teaching_assistant: false
   registration_fee: 1.5
-  user_id: 1
-  section_id: 1
-  study_group_id: 1
+  user: admin 
+  section: MWF
+  study_group: one
   class_coordinator: false
   study_group_leader: false
-  signup_reason_id: 1
+  signup_reason: one
   scholarship_code_id: 1

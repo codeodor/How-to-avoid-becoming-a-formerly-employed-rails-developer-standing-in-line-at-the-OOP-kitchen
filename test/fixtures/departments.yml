@@ -1,11 +1,11 @@
 # Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/Fixtures.html
 
-one:
-  name: MyString
-  description: MyText
-  user_id: 1
+math:
+  name: Math
+  description: We learn math.
+  user: admin
 
-two:
-  name: MyString
-  description: MyText
-  user_id: 1
+science:
+  name: Science
+  description: We learn science.
+  user: admin

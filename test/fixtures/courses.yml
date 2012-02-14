@@ -1,15 +1,15 @@
 # Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/Fixtures.html
 
-one:
-  department_id: 1
+algebra:
+  department: math
   name: MyString
   course_number: MyString
   description: MyText
-  website: MyString
+  website: http://www.example.com
 
-two:
-  department_id: 1
+biology:
+  department: science
   name: MyString
   course_number: MyString
   description: MyText
-  website: MyString
+  website: http://www.example.com
