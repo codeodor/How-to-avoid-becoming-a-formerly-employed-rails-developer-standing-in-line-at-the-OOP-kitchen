@@ -3,8 +3,28 @@
 one:
   department: math
   code: ABC123
-  discount_type: 1
-  discount_amount: 1.5
+  discount_type: <%= ScholarshipCode::DiscountTypes[:PERCENT][:id] %> 
+  discount_amount: 10.0
+
+percent:
+  department: math
+  code: percent
+  discount_type: <%= ScholarshipCode::DiscountTypes[:PERCENT][:id] %> 
+  discount_amount: 10.0
+
+smallpercent:
+  department: math
+  code: smallpercent
+  discount_type: <%= ScholarshipCode::DiscountTypes[:PERCENT][:id] %> 
+  discount_amount: 0.10
+
+
+flatamount:
+  department: math
+  code: flatamount
+  discount_type: <%= ScholarshipCode::DiscountTypes[:FLATAMOUNT][:id] %> 
+  discount_amount: 15.0
+
 
 two:
   department: science

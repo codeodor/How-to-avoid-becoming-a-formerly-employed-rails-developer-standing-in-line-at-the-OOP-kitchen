@@ -54,17 +54,19 @@ class RegistrationsController < ApplicationController
     end
     
     if params[:scholarship_code].to_s.length > 0
-      code = ScholarshipCode.find_by_department_id_and_code(@registration.section.course.department, params[:scholarship_code])
+      code = ScholarshipCode.find_by_department_id_and_code(@registration.section.course.department_id, params[:scholarship_code])
+      
       if code
         if code.discount_type == ScholarshipCode::DiscountTypes[:PERCENT][:id]
           if code.discount_amount > 1
-            discount = @registration.registration_fee * code.discount_amount / 100
+            discount = @registration.registration_fee.to_f * code.discount_amount.to_f / 100.0
           else
-            discount = @registration.registration_fee * code.discount_amount
+            discount = @registration.registration_fee.to_f * code.discount_amount.to_f
           end
         else
           discount = code.discount_amount
         end
+        
         @registration.registration_fee -= discount
         @registration.scholarship_code = code
       end
