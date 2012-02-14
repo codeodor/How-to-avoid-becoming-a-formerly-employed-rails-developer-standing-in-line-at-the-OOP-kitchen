@@ -2,6 +2,7 @@ require 'test_helper'
 
 class SignupReasonsControllerTest < ActionController::TestCase
   setup do
+    sign_in users(:admin)
     @signup_reason = signup_reasons(:one)
   end
 
@@ -23,6 +24,14 @@ class SignupReasonsControllerTest < ActionController::TestCase
 
     assert_redirected_to signup_reason_path(assigns(:signup_reason))
   end
+  
+  test "should show new when create signup_reason fails" do
+    assert_difference('SignupReason.count', 0) do
+      post :create, signup_reason: {name: ""}
+    end
+
+    assert_template :new
+  end
 
   test "should show signup_reason" do
     get :show, id: @signup_reason
@@ -37,6 +46,11 @@ class SignupReasonsControllerTest < ActionController::TestCase
   test "should update signup_reason" do
     put :update, id: @signup_reason, signup_reason: @signup_reason.attributes
     assert_redirected_to signup_reason_path(assigns(:signup_reason))
+  end
+  
+  test "should show edit when update signup_reason fails" do
+    put :update, id: @signup_reason, signup_reason: {name: ""}
+    assert_template :edit
   end
 
   test "should destroy signup_reason" do

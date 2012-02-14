@@ -36,3 +36,9 @@ gem 'jquery-rails'
 
 # To use debugger
 # gem 'ruby-debug19', :require => 'ruby-debug'
+
+group :test do
+  gem 'cover_me', '>= 1.2.0'
+  gem 'turn', :require => false
+  gem 'minitest'
+end
