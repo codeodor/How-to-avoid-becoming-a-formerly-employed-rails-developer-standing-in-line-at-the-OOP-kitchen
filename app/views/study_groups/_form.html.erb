@@ -1,4 +1,4 @@
-<%= form_for(@study_group) do |f| %>
+<%= form_for([@study_group.section.course.department, @study_group.section.course, @study_group.section, @study_group]) do |f| %>
   <% if @study_group.errors.any? %>
     <div id="error_explanation">
       <h2><%= pluralize(@study_group.errors.count, "error") %> prohibited this study_group from being saved:</h2>

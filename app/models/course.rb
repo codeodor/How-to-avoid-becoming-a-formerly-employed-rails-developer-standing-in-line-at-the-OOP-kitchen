@@ -4,5 +4,5 @@ class Course < ActiveRecord::Base
   has_many :current_sections, :class_name=>'Section', :conditions=>["end_date > ?", Time.now]
   
   validates_format_of :website, :with => URI::regexp(%w(http https))
-  
+  validates_presence_of :name
 end

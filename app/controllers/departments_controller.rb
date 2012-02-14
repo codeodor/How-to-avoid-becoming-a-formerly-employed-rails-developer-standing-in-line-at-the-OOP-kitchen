@@ -81,4 +81,14 @@ class DepartmentsController < ApplicationController
       format.json { head :no_content }
     end
   end
+  
+  
+  def invoice
+  end
+  
+  def create_invoices
+    Department.invoice_all(params[:month], params[:year])
+    flash[:notice] = "Departments have been invoiced"
+    redirect_to departments_path
+  end
 end

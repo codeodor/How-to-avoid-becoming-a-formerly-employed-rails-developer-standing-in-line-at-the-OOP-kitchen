@@ -2,5 +2,5 @@
 
 <%= render 'form' %>
 
-<%= link_to 'Show', @study_group %> |
-<%= link_to 'Back', study_groups_path %>
+<%= link_to 'Show', [@study_group.section.course.department, @study_group.section.course, @study_group.section, @study_group] %> |
+<%= link_to 'Back', department_course_section_study_groups_path(@study_group.section.course.department, @study_group.section.course, @study_group.section) %>

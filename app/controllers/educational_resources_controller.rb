@@ -24,7 +24,7 @@ class EducationalResourcesController < ApplicationController
   # GET /educational_resources/new
   # GET /educational_resources/new.json
   def new
-    @educational_resource = EducationalResource.new
+    @educational_resource = EducationalResource.new(resource_list_id: params[:resource_list_id])
 
     respond_to do |format|
       format.html # new.html.erb
@@ -40,11 +40,12 @@ class EducationalResourcesController < ApplicationController
   # POST /educational_resources
   # POST /educational_resources.json
   def create
+    params[:educational_resource][:resource_list_id] = params[:resource_list_id]
     @educational_resource = EducationalResource.new(params[:educational_resource])
 
     respond_to do |format|
       if @educational_resource.save
-        format.html { redirect_to @educational_resource, notice: 'Educational resource was successfully created.' }
+        format.html { redirect_to [@educational_resource.resource_list, @educational_resource], notice: 'Educational resource was successfully created.' }
         format.json { render json: @educational_resource, status: :created, location: @educational_resource }
       else
         format.html { render action: "new" }
@@ -60,7 +61,7 @@ class EducationalResourcesController < ApplicationController
 
     respond_to do |format|
       if @educational_resource.update_attributes(params[:educational_resource])
-        format.html { redirect_to @educational_resource, notice: 'Educational resource was successfully updated.' }
+        format.html { redirect_to [@educational_resource.resource_list, @educational_resource], notice: 'Educational resource was successfully updated.' }
         format.json { head :no_content }
       else
         format.html { render action: "edit" }
@@ -76,7 +77,7 @@ class EducationalResourcesController < ApplicationController
     @educational_resource.destroy
 
     respond_to do |format|
-      format.html { redirect_to educational_resources_url }
+      format.html { redirect_to resource_list_educational_resources_url(@educational_resource.resource_list) }
       format.json { head :no_content }
     end
   end
