@@ -41,36 +41,8 @@ class RegistrationsController < ApplicationController
   # POST /registrations
   # POST /registrations.json
   def create
-    @registration = Registration.new(params[:registration])
-    @registration.section_id = params[:section_id]
-    
-    unless current_user.admin?
-      @registration.registration_fee = @registration.section.registration_fee
-    end
-    
-    if params[:registration][:study_group_id].to_s.length == 0
-      study_group = StudyGroup.create!(params[:study_group])
-      @registration.study_group = study_group
-    end
-    
-    if params[:scholarship_code].to_s.length > 0
-      code = ScholarshipCode.find_by_department_id_and_code(@registration.section.course.department_id, params[:scholarship_code])
-      
-      if code
-        if code.discount_type == ScholarshipCode::DiscountTypes[:PERCENT][:id]
-          if code.discount_amount > 1
-            discount = @registration.registration_fee.to_f * code.discount_amount.to_f / 100.0
-          else
-            discount = @registration.registration_fee.to_f * code.discount_amount.to_f
-          end
-        else
-          discount = code.discount_amount
-        end
-        
-        @registration.registration_fee -= discount
-        @registration.scholarship_code = code
-      end
-    end
+    params[:registration][:section_id] = params[:section_id]
+    @registration = Registration.new(params[:registration], current_user, params[:study_group], params[:scholarship_code])
     
     respond_to do |format|
       if @registration.save
