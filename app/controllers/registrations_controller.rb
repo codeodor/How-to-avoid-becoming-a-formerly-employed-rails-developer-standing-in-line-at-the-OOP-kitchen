@@ -42,7 +42,7 @@ class RegistrationsController < ApplicationController
   # POST /registrations.json
   def create
     params[:registration][:section_id] = params[:section_id]
-    @registration = Registration.new(params[:registration], current_user, params[:study_group], params[:scholarship_code])
+    @registration = Registrar.new.register(current_user, params[:registration], params[:study_group], params[:scholarship_code])
     
     respond_to do |format|
       if @registration.save
