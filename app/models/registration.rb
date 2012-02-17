@@ -1,33 +1,40 @@
 class Registration < ActiveRecord::Base
   def initialize(attrs=nil, user=nil, study_group_attrs=nil, scholarship=nil)
     super(attrs)
-    
+    set_user_and_registration_fee(user)
+    set_study_group(study_group_attrs)
+    account_for_scholarship(scholarship)  
+  end
+  
+  def set_user_and_registration_fee(user)
     unless user && user.admin?
       self.registration_fee = self.section.registration_fee 
       self.user = user
     end
-    
-    if study_group_attrs && !self.study_group_id
-      new_group = StudyGroup.create(study_group_attrs)
+  end
+  
+  def set_study_group(attrs)
+    if attrs && !self.study_group_id
+      new_group = StudyGroup.create(attrs)
       self.study_group = new_group if new_group.valid?
-    end
-    
-    if scholarship
-      code = ScholarshipCode.find_by_department_id_and_code(self.section.course.department, scholarship)
-      if code
-        if code.discount_type == ScholarshipCode::DiscountTypes[:PERCENT][:id]
-          if code.discount_amount > 1
-            discount = self.registration_fee * code.discount_amount / 100
-          else
-            discount = self.registration_fee * code.discount_amount
-          end
+    end  
+  end
+  
+  def account_for_scholarship(scholarship)
+    code = ScholarshipCode.find_by_department_id_and_code(self.section.course.department, scholarship)
+    if code
+      if code.discount_type == ScholarshipCode::DiscountTypes[:PERCENT][:id]
+        if code.discount_amount > 1
+          discount = self.registration_fee * code.discount_amount / 100
         else
-          discount = code.discount_amount
+          discount = self.registration_fee * code.discount_amount
         end
-        self.registration_fee -= discount
-        self.scholarship_code = code
+      else
+        discount = code.discount_amount
       end
-    end    
+      self.registration_fee -= discount
+      self.scholarship_code = code
+    end
   end
   
   belongs_to :section
